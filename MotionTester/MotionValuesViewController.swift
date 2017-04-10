@@ -27,7 +27,7 @@ class MotionValuesViewController: UIViewController {
 //            
 //        }
         
-        motionManager.getAttitude(interval: 0.2) { (attitude) in
+        motionManager.getAttitudeAsync(interval: 0.2) { (attitude) in
 //            print(attitude.roll * 180 / M_PI)
 //            print(attitude.pitch * 180 / M_PI)
 //            print(attitude.yaw * 180 / M_PI)

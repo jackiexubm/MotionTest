@@ -11,7 +11,7 @@ import SceneKit
 import CoreMotion
 
 class SceneViewController: UIViewController, SCNSceneRendererDelegate{
-
+    
     var gameView: SCNView!
     var gameScene: SCNScene!
     var cameraNode: SCNNode!
@@ -21,7 +21,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     var transformTimer: TimeInterval = 0
     
     let motionManager: MyMotion = MyMotion()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,38 +32,12 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         initLabels()
         createObject()
         
-        motionManager.getAttitude(interval: 0.1) { (attitude) in
-            let quat: CMQuaternion = attitude.quaternion
-//            
-//            let roll = atan2(2*(quat.y*quat.w - quat.x*quat.z), 1 - 2*quat.y*quat.y - 2*quat.z*quat.z)
-//            let pitch = atan2(2*(quat.x*quat.w + quat.y*quat.z), 1 - 2*quat.x*quat.x - 2*quat.z*quat.z) - M_PI / 2
-//            let yaw = asin(2*quat.x*quat.y + 2*quat.w*quat.z)
-//            
-            
-            let w = quat.w
-            let x = quat.x
-            let y = quat.y
-            let z = quat.z
-            
-            
-            let roll = attitude.roll
-            let pitch = attitude.pitch
-            let yaw = attitude.yaw
-            
-            
+        motionManager.getAttitudeAsync(interval: 0.1) { (attitude) in
+            let q: CMQuaternion = attitude.quaternion
+
             DispatchQueue.main.async {
-//                self.objNode.eulerAngles.z = Float(-1 * roll)
-//                self.objNode.eulerAngles.x = Float(pitch)
-//                self.objNode.eulerAngles.y = Float(yaw)
-//                self.objNode.eulerAngles.z = Float(-1 * roll)
-//                self.objNode.eulerAngles.x = Float(pitch)
-//                self.objNode.eulerAngles.y = Float(yaw)
-           
-                self.objNode.orientation = SCNQuaternion.init(x, y, z, w)
+                self.cameraNode.orientation = SCNQuaternion.init(q.x, q.y, q.z, q.w)
                 
-//                self.RollVal.text = String(format: "%.1f", roll * 180 / M_PI)
-//                self.PitchVal.text = String(format: "%.1f", pitch * 180 / M_PI)
-//                self.YawVal.text = String(format: "%.1f", yaw * 180 / M_PI)
             }
         }
     }
@@ -87,7 +61,21 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     func initCamera(){
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 20)
+        gameScene.rootNode.addChildNode(cameraNode)
+        cameraNode.position = SCNVector3.init(0, 0, 5)
+    }
+    
+    func createObject(){
+        let obj: SCNGeometry = SCNBox()
+        (obj as! SCNBox).height = 4
+        (obj as! SCNBox).width = 2
+        (obj as! SCNBox).length = 0.2
+        
+        obj.materials.first?.diffuse.contents = UIColor.yellow
+        objNode = SCNNode(geometry: obj)
+        
+        gameScene.rootNode.addChildNode(objNode)
+        gameScene.rootNode.position.z -= 2
     }
     
     func initLabels(){
@@ -107,32 +95,19 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         addConstraintString(str: "V:[v0]-2-|", views: ["v0":YawVal])
     }
     
-    func createObject(){
-        let obj: SCNGeometry = SCNBox()
-        (obj as! SCNBox).height = 4
-        (obj as! SCNBox).width = 2
-        (obj as! SCNBox).length = 0.2
-        
-        obj.materials.first?.diffuse.contents = UIColor.yellow
-        objNode = SCNNode(geometry: obj)
-        
-        gameScene.rootNode.addChildNode(objNode)
-        gameScene.rootNode.position.z -= 2
-    }
-    
-//    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-//        if time > transformTimer{
-//            objNode.eulerAngles.x += Float(5 * M_PI / 180)
-//            objNode.eulerAngles.y += Float(5 * M_PI / 180)
-//            objNode.eulerAngles.z += Float(5 * M_PI / 180)
-//            transformTimer = time + 0.1
-//        }
-//    }
+    //    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+    //        if time > transformTimer{
+    //            objNode.eulerAngles.x += Float(5 * M_PI / 180)
+    //            objNode.eulerAngles.y += Float(5 * M_PI / 180)
+    //            objNode.eulerAngles.z += Float(5 * M_PI / 180)
+    //            transformTimer = time + 0.1
+    //        }
+    //    }
     
     
-//    override var shouldAutorotate: Bool {
-//        return false
-//    }
+    //    override var shouldAutorotate: Bool {
+    //        return false
+    //    }
     
     
     let Roll: UILabel = {
@@ -193,8 +168,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
     }
     
-
-
-
-
+    
+    
+    
+    
 }
