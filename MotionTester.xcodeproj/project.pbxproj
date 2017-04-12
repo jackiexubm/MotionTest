@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E91046601E9D9A9900C0336A /* hollowSphere.dae in Resources */ = {isa = PBXBuildFile; fileRef = E910465F1E9D9A9900C0336A /* hollowSphere.dae */; };
+		E91046621E9D9B9700C0336A /* hollowSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = E91046611E9D9B9700C0336A /* hollowSphere.obj */; };
+		E91046661E9DC02700C0336A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91046651E9DC02700C0336A /* Assets.xcassets */; };
+		E91046681E9DCC1700C0336A /* hollowSphere2.obj in Resources */ = {isa = PBXBuildFile; fileRef = E91046671E9DCC1700C0336A /* hollowSphere2.obj */; };
 		E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9386AB31E919E0100F1B55C /* SceneViewController.swift */; };
 		E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */; };
-		E94C86141E8EAEEB00A0968E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94C86131E8EAEEB00A0968E /* Assets.xcassets */; };
 		E94C861F1E8EAF7E00A0968E /* MotionValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */; };
 		E94C86211E8EAFE500A0968E /* MotionValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C86201E8EAFE500A0968E /* MotionValuesView.swift */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E910465F1E9D9A9900C0336A /* hollowSphere.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = hollowSphere.dae; sourceTree = "<group>"; };
+		E91046611E9D9B9700C0336A /* hollowSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hollowSphere.obj; sourceTree = "<group>"; };
+		E91046651E9DC02700C0336A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E91046671E9DCC1700C0336A /* hollowSphere2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hollowSphere2.obj; sourceTree = "<group>"; };
 		E9386AB31E919E0100F1B55C /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		E94C86091E8EAEEB00A0968E /* MotionTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E94C86131E8EAEEB00A0968E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E94C86181E8EAEEB00A0968E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionValuesViewController.swift; sourceTree = "<group>"; };
 		E94C86201E8EAFE500A0968E /* MotionValuesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionValuesView.swift; sourceTree = "<group>"; };
@@ -56,13 +62,16 @@
 		E94C860B1E8EAEEB00A0968E /* MotionTester */ = {
 			isa = PBXGroup;
 			children = (
+				E91046651E9DC02700C0336A /* Assets.xcassets */,
 				E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */,
 				E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */,
 				E94C86201E8EAFE500A0968E /* MotionValuesView.swift */,
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
-				E94C86131E8EAEEB00A0968E /* Assets.xcassets */,
 				E94C86181E8EAEEB00A0968E /* Info.plist */,
 				E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */,
+				E910465F1E9D9A9900C0336A /* hollowSphere.dae */,
+				E91046611E9D9B9700C0336A /* hollowSphere.obj */,
+				E91046671E9DCC1700C0336A /* hollowSphere2.obj */,
 			);
 			path = MotionTester;
 			sourceTree = "<group>";
@@ -127,7 +136,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94C86141E8EAEEB00A0968E /* Assets.xcassets in Resources */,
+				E91046681E9DCC1700C0336A /* hollowSphere2.obj in Resources */,
+				E91046601E9D9A9900C0336A /* hollowSphere.dae in Resources */,
+				E91046661E9DC02700C0336A /* Assets.xcassets in Resources */,
+				E91046621E9D9B9700C0336A /* hollowSphere.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
