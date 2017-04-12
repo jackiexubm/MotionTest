@@ -18,6 +18,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     var objNode: SCNNode!
     var hollowSphere: SCNNode!
+    var lightNode: SCNNode!
     
     var transformTimer: TimeInterval = 0
     
@@ -65,7 +66,18 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         gameScene.rootNode.addChildNode(cameraNode)
-        cameraNode.position = SCNVector3.init(0, 0, 5)
+        cameraNode.position = SCNVector3.init(0, 0, 0)
+        
+        cameraNode.camera?.zNear = 0.3
+        cameraNode.camera?.zFar = 2.0
+        
+   
+        cameraNode.camera?.xFov = 0
+        cameraNode.camera?.yFov = 90
+        
+        print(cameraNode.camera?.xFov)
+        print(cameraNode.camera?.yFov)
+        
     }
     
     func createObject(){
@@ -84,7 +96,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
         
         
-        let importScene = SCNScene.init(named: "hollowSphere.obj")
+        let importScene = SCNScene.init(named: "collage.dae")
         hollowSphere = importScene!.rootNode.childNodes[0]
         
         
@@ -99,15 +111,29 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         //hollowSphere.geometry?.materials[1].diffuse.contents = UIColor.blue
         
         let mat = hollowSphere.geometry?.materials[0]
+        mat?.isDoubleSided = true
+        mat?.lightingModel = SCNMaterial.LightingModel.constant
         
-        mat?.lightingModel = SCNMaterial.LightingModel.physicallyBased
+        gameScene.rootNode.addChildNode(hollowSphere)
+
+        
+        
+        
+        
+        lightNode = SCNNode()
+        let light: SCNLight = SCNLight()
+        lightNode.light = light
+        lightNode.position = SCNVector3.init(0, 0, 0)
+        
+        //gameScene.rootNode.addChildNode(lightNode)
+        print(light.type)
+        
         
 //        mat?.diffuse.contents = #imageLiteral(resourceName: "rustediron-streaks-albedo")
 //        mat?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
 //        mat?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
 //        mat?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
 
-        gameScene.rootNode.addChildNode(hollowSphere)
     }
     
     //    func initLabels(){
@@ -127,15 +153,17 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     //        addConstraintString(str: "V:[v0]-2-|", views: ["v0":YawVal])
     //    }
     
-        func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-            if time > transformTimer{
-                hollowSphere.eulerAngles.x += Float(3 * M_PI / 180)
-                //hollowSphere.position.z += 0.05
-//                objNode.eulerAngles.y += Float(5 * M_PI / 180)
-//                objNode.eulerAngles.z += Float(5 * M_PI / 180)
-                transformTimer = time + 0.1
-            }
-        }
+//        func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+//            if time > transformTimer{
+//                lightNode.position.z -= 0.02
+//                cameraNode.position.z -= 0.02
+//                //hollowSphere.eulerAngles.x += Float(3 * M_PI / 180)
+//                //hollowSphere.position.z += 0.05
+////                objNode.eulerAngles.y += Float(5 * M_PI / 180)
+////                objNode.eulerAngles.z += Float(5 * M_PI / 180)
+//                transformTimer = time + 0.1
+//            }
+//        }
   
     //    override var shouldAutorotate: Bool {
     //        return false
