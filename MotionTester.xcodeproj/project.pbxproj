@@ -17,7 +17,9 @@
 		E98AC5191E9FC3030022E338 /* Collage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E98AC5181E9FC3030022E338 /* Collage.jpg */; };
 		E98AC51B1E9FE5F00022E338 /* betterCollage.dae in Resources */ = {isa = PBXBuildFile; fileRef = E98AC51A1E9FE5F00022E338 /* betterCollage.dae */; };
 		E98AC51D1E9FFC9C0022E338 /* smallerCollage.dae in Resources */ = {isa = PBXBuildFile; fileRef = E98AC51C1E9FFC9C0022E338 /* smallerCollage.dae */; };
+		E98AC51F1EA005650022E338 /* nonuniformCollage.dae in Resources */ = {isa = PBXBuildFile; fileRef = E98AC51E1EA005650022E338 /* nonuniformCollage.dae */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
+		E9F213831EAE54F900AEE6C5 /* shop.dae in Resources */ = {isa = PBXBuildFile; fileRef = E9F213821EAE54F900AEE6C5 /* shop.dae */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +35,9 @@
 		E98AC5181E9FC3030022E338 /* Collage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Collage.jpg; sourceTree = "<group>"; };
 		E98AC51A1E9FE5F00022E338 /* betterCollage.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = betterCollage.dae; sourceTree = "<group>"; };
 		E98AC51C1E9FFC9C0022E338 /* smallerCollage.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = smallerCollage.dae; sourceTree = "<group>"; };
+		E98AC51E1EA005650022E338 /* nonuniformCollage.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = nonuniformCollage.dae; sourceTree = "<group>"; };
 		E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMotion.swift; sourceTree = "<group>"; };
+		E9F213821EAE54F900AEE6C5 /* shop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = shop.dae; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +77,12 @@
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
 				E94C86181E8EAEEB00A0968E /* Info.plist */,
 				E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */,
+				E9F213821EAE54F900AEE6C5 /* shop.dae */,
 				E90A460B1E9E91DE00710ED7 /* Collage.jpg */,
 				E98AC5181E9FC3030022E338 /* Collage.jpg */,
 				E98AC51A1E9FE5F00022E338 /* betterCollage.dae */,
 				E98AC51C1E9FFC9C0022E338 /* smallerCollage.dae */,
+				E98AC51E1EA005650022E338 /* nonuniformCollage.dae */,
 				E90A460D1E9E9D1500710ED7 /* collage.dae */,
 			);
 			path = MotionTester;
@@ -144,8 +150,10 @@
 			files = (
 				E90A460E1E9E9D1500710ED7 /* collage.dae in Resources */,
 				E98AC5191E9FC3030022E338 /* Collage.jpg in Resources */,
+				E9F213831EAE54F900AEE6C5 /* shop.dae in Resources */,
 				E91046661E9DC02700C0336A /* Assets.xcassets in Resources */,
 				E98AC51D1E9FFC9C0022E338 /* smallerCollage.dae in Resources */,
+				E98AC51F1EA005650022E338 /* nonuniformCollage.dae in Resources */,
 				E90A460C1E9E91DE00710ED7 /* Collage.jpg in Resources */,
 				E98AC51B1E9FE5F00022E338 /* betterCollage.dae in Resources */,
 			);

@@ -51,13 +51,30 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         gameView = SCNView()
         view = gameView
         gameView.backgroundColor = UIColor.black
-        gameView.autoenablesDefaultLighting = true
+        gameView.autoenablesDefaultLighting = false
         gameView.delegate = self
+        gameView.allowsCameraControl = true
+        
     }
     
     func initScene(){
         gameScene = SCNScene()
         gameView.scene = gameScene
+        
+        let importScene: SCNScene = SCNScene.init(named: "shop.dae")!
+        
+        
+        
+        for node in importScene.rootNode.childNodes {
+            
+            if node.name == "Lights" {
+                let lit: SCNLight = SCNLight()
+                
+                node.light = lit
+            }
+        }
+        
+        gameView.scene = importScene 
         
         gameView.isPlaying = true
     }
@@ -66,13 +83,13 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         gameScene.rootNode.addChildNode(cameraNode)
-        cameraNode.position = SCNVector3.init(0, 0, 0)
+        cameraNode.position = SCNVector3.init(0, 0, 1.6)
         
-        cameraNode.camera?.zNear = 0.2
-        cameraNode.camera?.zFar = 2.0
+        cameraNode.camera?.zNear = 0.1
+        cameraNode.camera?.zFar = 10
         
         
-                cameraNode.camera?.xFov = 45
+        //       cameraNode.camera?.xFov = 45
         //        cameraNode.camera?.yFov = 90
         
         
@@ -94,17 +111,19 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
         
         
-        let importScene = SCNScene.init(named: "smallerCollage.dae")
-        hollowSphere = importScene!.rootNode.childNodes[0]
+       // let importScene = SCNScene.init(named: "shop.dae")
         
         
-        let mat = hollowSphere.geometry?.materials[0]
-        print(hollowSphere.geometry?.materials.count)
-        mat?.isDoubleSided = true
-        mat?.lightingModel = SCNMaterial.LightingModel.constant
-        
-        gameScene.rootNode.addChildNode(hollowSphere)
-        
+//        hollowSphere = importScene!.rootNode.childNodes[0]
+//        
+//        
+//        let mat = hollowSphere.geometry?.materials[0]
+//        print(hollowSphere.geometry?.materials.count)
+//        mat?.isDoubleSided = true
+//        mat?.lightingModel = SCNMaterial.LightingModel.constant
+//        
+//        gameScene.rootNode.addChildNode(hollowSphere)
+//        
         
         
         
