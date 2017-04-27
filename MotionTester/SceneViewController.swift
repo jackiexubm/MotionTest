@@ -20,6 +20,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     var hollowSphere: SCNNode!
     var lightNode: SCNNode!
     
+    var testNode: SCNNode!
+    
     var transformTimer: TimeInterval = 0
     
     let motionManager: MyMotion = MyMotion()
@@ -38,7 +40,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             let q: CMQuaternion = attitude.quaternion
             
             DispatchQueue.main.async {
-                
                 //SCNTransaction.animationDuration = 0.04
                 
                 self.cameraNode.orientation = SCNQuaternion.init(q.x, q.y, q.z, q.w)
@@ -53,8 +54,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         gameView.backgroundColor = UIColor.black
         gameView.autoenablesDefaultLighting = false
         gameView.delegate = self
-        gameView.allowsCameraControl = true
-        
+        //gameView.allowsCameraControl = true
     }
     
     func initScene(){
@@ -63,18 +63,19 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
         let importScene: SCNScene = SCNScene.init(named: "shop.dae")!
         
-        
-        
         for node in importScene.rootNode.childNodes {
             
-            if node.name == "Lights" {
-                let lit: SCNLight = SCNLight()
-                
-                node.light = lit
+            gameScene.rootNode.addChildNode(node)
+            print(node.name ,node.geometry?.firstMaterial?.lightingModel)
+            node.geometry?.firstMaterial?.isDoubleSided = true
+            
+            if node.name!.contains("Wall_2") {
+                print(node.name)
+                testNode = node
             }
+
         }
         
-        gameView.scene = importScene 
         
         gameView.isPlaying = true
     }
@@ -83,10 +84,10 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         gameScene.rootNode.addChildNode(cameraNode)
-        cameraNode.position = SCNVector3.init(0, 0, 1.6)
+        cameraNode.position = SCNVector3.init(0, 0, 1.4)
         
         cameraNode.camera?.zNear = 0.1
-        cameraNode.camera?.zFar = 10
+        cameraNode.camera?.zFar = 100
         
         
         //       cameraNode.camera?.xFov = 45
@@ -111,19 +112,19 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
         
         
-       // let importScene = SCNScene.init(named: "shop.dae")
+        // let importScene = SCNScene.init(named: "shop.dae")
         
         
-//        hollowSphere = importScene!.rootNode.childNodes[0]
-//        
-//        
-//        let mat = hollowSphere.geometry?.materials[0]
-//        print(hollowSphere.geometry?.materials.count)
-//        mat?.isDoubleSided = true
-//        mat?.lightingModel = SCNMaterial.LightingModel.constant
-//        
-//        gameScene.rootNode.addChildNode(hollowSphere)
-//        
+        //        hollowSphere = importScene!.rootNode.childNodes[0]
+        //
+        //
+        //        let mat = hollowSphere.geometry?.materials[0]
+        //        print(hollowSphere.geometry?.materials.count)
+        //        mat?.isDoubleSided = true
+        //        mat?.lightingModel = SCNMaterial.LightingModel.constant
+        //
+        //        gameScene.rootNode.addChildNode(hollowSphere)
+        //
         
         
         
@@ -134,11 +135,11 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         //
         //gameScene.rootNode.addChildNode(lightNode)
         
-//        mat?.lightingModel = SCNMaterial.LightingModel.physicallyBased
-//        mat?.diffuse.contents = #imageLiteral(resourceName: "rustediron-streaks-albedo")
-//        mat?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
-//        mat?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
-//        mat?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
+        //        mat?.lightingModel = SCNMaterial.LightingModel.physicallyBased
+        //        mat?.diffuse.contents = #imageLiteral(resourceName: "rustediron-streaks-albedo")
+        //        mat?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
+        //        mat?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
+        //        mat?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
         
     }
     
@@ -159,17 +160,14 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     //        addConstraintString(str: "V:[v0]-2-|", views: ["v0":YawVal])
     //    }
     
-    //        func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-    //            if time > transformTimer{
-    //                lightNode.position.z -= 0.02
-    //                cameraNode.position.z -= 0.02
-    //                //hollowSphere.eulerAngles.x += Float(3 * M_PI / 180)
-    //                //hollowSphere.position.z += 0.05
-    ////                objNode.eulerAngles.y += Float(5 * M_PI / 180)
-    ////                objNode.eulerAngles.z += Float(5 * M_PI / 180)
-    //                transformTimer = time + 0.1
-    //            }
-    //        }
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if time > transformTimer{
+            //cameraNode.position.y += 0.3
+            testNode.eulerAngles.z += 0.005
+            //                objNode.eulerAngles.z += Float(5 * M_PI / 180)
+            transformTimer = time + 0.1
+        }
+    }
     
     //    override var shouldAutorotate: Bool {
     //        return false
