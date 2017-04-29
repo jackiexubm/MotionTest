@@ -20,6 +20,7 @@
 		E98AC51F1EA005650022E338 /* nonuniformCollage.dae in Resources */ = {isa = PBXBuildFile; fileRef = E98AC51E1EA005650022E338 /* nonuniformCollage.dae */; };
 		E9A3BBF81EB12FF100F4C2C7 /* shop.dae in Resources */ = {isa = PBXBuildFile; fileRef = E9A3BBF71EB12FF100F4C2C7 /* shop.dae */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
+		E9FDE65F1EB46E7B0088EB94 /* Arrowhead.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FDE65E1EB46E7B0088EB94 /* Arrowhead.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E98AC51E1EA005650022E338 /* nonuniformCollage.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = nonuniformCollage.dae; sourceTree = "<group>"; };
 		E9A3BBF71EB12FF100F4C2C7 /* shop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = shop.dae; sourceTree = "<group>"; };
 		E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMotion.swift; sourceTree = "<group>"; };
+		E9FDE65E1EB46E7B0088EB94 /* Arrowhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrowhead.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				E91046651E9DC02700C0336A /* Assets.xcassets */,
+				E9FDE65E1EB46E7B0088EB94 /* Arrowhead.png */,
 				E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */,
 				E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */,
 				E94C86201E8EAFE500A0968E /* MotionValuesView.swift */,
@@ -155,6 +158,7 @@
 				E98AC51D1E9FFC9C0022E338 /* smallerCollage.dae in Resources */,
 				E98AC51F1EA005650022E338 /* nonuniformCollage.dae in Resources */,
 				E90A460C1E9E91DE00710ED7 /* Collage.jpg in Resources */,
+				E9FDE65F1EB46E7B0088EB94 /* Arrowhead.png in Resources */,
 				E98AC51B1E9FE5F00022E338 /* betterCollage.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
