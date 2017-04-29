@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = SceneViewController()
+        window?.rootViewController = CartViewController()
+        //window?.rootViewController = SceneViewController()
 
-//        window?.rootViewController = MotionValuesViewController()
         
         
         return true

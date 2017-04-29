@@ -10,6 +10,9 @@
 		E90A460C1E9E91DE00710ED7 /* Collage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E90A460B1E9E91DE00710ED7 /* Collage.jpg */; };
 		E90A460E1E9E9D1500710ED7 /* collage.dae in Resources */ = {isa = PBXBuildFile; fileRef = E90A460D1E9E9D1500710ED7 /* collage.dae */; };
 		E91046661E9DC02700C0336A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91046651E9DC02700C0336A /* Assets.xcassets */; };
+		E93133A71EB5378E00F528CF /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93133A61EB5378E00F528CF /* CartViewController.swift */; };
+		E93133A91EB5379700F528CF /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93133A81EB5379700F528CF /* CartView.swift */; };
+		E93133AB1EB53A9100F528CF /* FloorBakeHiRes.png in Resources */ = {isa = PBXBuildFile; fileRef = E93133AA1EB53A9100F528CF /* FloorBakeHiRes.png */; };
 		E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9386AB31E919E0100F1B55C /* SceneViewController.swift */; };
 		E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */; };
 		E94C861F1E8EAF7E00A0968E /* MotionValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */; };
@@ -27,6 +30,9 @@
 		E90A460B1E9E91DE00710ED7 /* Collage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Collage.jpg; sourceTree = "<group>"; };
 		E90A460D1E9E9D1500710ED7 /* collage.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = collage.dae; sourceTree = "<group>"; };
 		E91046651E9DC02700C0336A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E93133A61EB5378E00F528CF /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E93133A81EB5379700F528CF /* CartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		E93133AA1EB53A9100F528CF /* FloorBakeHiRes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FloorBakeHiRes.png; sourceTree = "<group>"; };
 		E9386AB31E919E0100F1B55C /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		E94C86091E8EAEEB00A0968E /* MotionTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,9 +84,12 @@
 				E94C861E1E8EAF7E00A0968E /* MotionValuesViewController.swift */,
 				E94C86201E8EAFE500A0968E /* MotionValuesView.swift */,
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
+				E93133A61EB5378E00F528CF /* CartViewController.swift */,
+				E93133A81EB5379700F528CF /* CartView.swift */,
 				E94C86181E8EAEEB00A0968E /* Info.plist */,
 				E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */,
 				E9A3BBF71EB12FF100F4C2C7 /* shop.dae */,
+				E93133AA1EB53A9100F528CF /* FloorBakeHiRes.png */,
 				E90A460B1E9E91DE00710ED7 /* Collage.jpg */,
 				E98AC5181E9FC3030022E338 /* Collage.jpg */,
 				E98AC51A1E9FE5F00022E338 /* betterCollage.dae */,
@@ -152,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90A460E1E9E9D1500710ED7 /* collage.dae in Resources */,
+				E93133AB1EB53A9100F528CF /* FloorBakeHiRes.png in Resources */,
 				E98AC5191E9FC3030022E338 /* Collage.jpg in Resources */,
 				E9A3BBF81EB12FF100F4C2C7 /* shop.dae in Resources */,
 				E91046661E9DC02700C0336A /* Assets.xcassets in Resources */,
@@ -171,9 +181,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */,
+				E93133A91EB5379700F528CF /* CartView.swift in Sources */,
 				E94C861F1E8EAF7E00A0968E /* MotionValuesViewController.swift in Sources */,
 				E94C86211E8EAFE500A0968E /* MotionValuesView.swift in Sources */,
 				E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */,
+				E93133A71EB5378E00F528CF /* CartViewController.swift in Sources */,
 				E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

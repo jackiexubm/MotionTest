@@ -73,16 +73,42 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         for node in importScene.rootNode.childNodes {
             
             gameScene.rootNode.addChildNode(node)
-            print(node.name ,node.geometry?.firstMaterial?.lightingModel)
-            node.geometry?.firstMaterial?.isDoubleSided = true
             
-            if node.name!.contains("Wall_2") {
+            if node.name!.contains("Floor"){
                 print(node.name)
-                testNode = node
+                print(node.geometry?.materials.count)
+                print(node.geometry?.firstMaterial)
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBakeHiRes")
+                //node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBake")
+                node.geometry?.firstMaterial?.lightingModel = .constant
+                print(node.geometry?.firstMaterial)
             }
+            
+            if node.name!.contains("Shelf") {
+//                print(node.geometry?.materials.count)
+//                print(node.geometry?.firstMaterial?.blendMode.rawValue)
+//                
+//                print(node.geometry?.firstMaterial?.cullMode.rawValue)
+//                
+               // node.geometry?.firstMaterial?.cullMode.
+                
+                //node.geometry?.firstMaterial?.blendMode =
+            }
+            
+            node.geometry?.firstMaterial?.isDoubleSided = true
+
 
         }
         
+        lightNode = SCNNode()
+        let lit = SCNLight()
+        
+        lit.castsShadow = true
+        lit.intensity = 3000
+        lightNode.light = lit
+        
+        lightNode.position = SCNVector3Make(0, 10, 3.7)
+        gameScene.rootNode.addChildNode(lightNode)
         
         gameView.isPlaying = true
     }
@@ -104,7 +130,18 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first!.location(in: gameView)
         let hitList = gameView.hitTest(location, options: nil)
-        print(hitList.first?.node.name)
+        let nodeName = hitList.first?.node.name
+        print(nodeName)
+        
+        
+        switch nodeName{
+        case "Ceiling"?:
+            print("ceil")
+        case "Floor"?:
+            print("flo")
+        default:
+            print("neither")
+        }
         
     }
 
@@ -113,9 +150,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
 //    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 //        if time > transformTimer{
-//            //cameraNode.position.y += 0.3
-//            testNode.eulerAngles.z += 0.005
-//            //                objNode.eulerAngles.z += Float(5 * M_PI / 180)
+//            lightNode.position.y -= 0.7
 //            transformTimer = time + 0.1
 //        }
 //    }
@@ -140,6 +175,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         view.addSubview(downAisleButton)
         view.addSubview(raiseCameraButton)
         view.addSubview(lowerCameraButton)
+        view.addSubview(cartButton)
         
         addConstraintString(str: "H:|-10-[v0(100)]", views: ["v0": walkButtonsImage])
         addConstraintString(str: "V:|-10-[v0(50)]", views: ["v0": walkButtonsImage])
@@ -154,6 +190,11 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         addConstraintString(str: "H:|[v0(60)][v1(60)]", views: ["v0": lowerCameraButton, "v1": raiseCameraButton])
         addConstraintString(str: "V:[v0(70)]|", views: ["v0": raiseCameraButton])
         addConstraintString(str: "V:[v0(70)]|", views: ["v0": lowerCameraButton])
+        
+        addConstraintString(str: "V:[v0(80)]", views: ["v0" : cartButton])
+        addConstraintString(str: "H:|[v0(40)]", views: ["v0" : cartButton])
+        self.view.addConstraint(NSLayoutConstraint(item: cartButton, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0))
+        
 
         
     }
@@ -211,6 +252,14 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    let cartButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.blue
+        button.addTarget(self, action: #selector(openCart), for: UIControlEvents.touchUpInside)
+        return button
+    }()
 
     
     func startRaiseCamera(){
@@ -235,7 +284,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     func startWalkUp(){
         walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
-            self.cameraNode.position.y += 0.1
+            self.cameraNode.position.y += 0.5
         }
     }
     
@@ -245,12 +294,18 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     func startWalkDown(){
         walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
-            self.cameraNode.position.y -= 0.1
+            self.cameraNode.position.y -= 0.5
         }
     }
     
     func stopWalkDown(){
         walkTimer?.invalidate()
+    }
+    
+    func openCart(){
+    
+        //print(lightNode.light?.shadow)
+        
     }
     
     
