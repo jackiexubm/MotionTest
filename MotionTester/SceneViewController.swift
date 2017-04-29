@@ -43,9 +43,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         initScene()
         initCamera()
         initSubviews()
-        createObject()
         
-        motionManager.getAttitudeAsync(interval: 0.05) { (attitude) in
+        motionManager.getAttitudeAsync(interval: 0.04) { (attitude) in
             let q: CMQuaternion = attitude.quaternion
             
             DispatchQueue.main.async {
@@ -63,7 +62,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         gameView.backgroundColor = UIColor.black
         gameView.autoenablesDefaultLighting = false
         gameView.delegate = self
-        //gameView.allowsCameraControl = true
     }
     
     func initScene(){
@@ -103,52 +101,13 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         //        cameraNode.camera?.yFov = 90
     }
     
-    func createObject(){
-        //        let rectangle: SCNGeometry = SCNBox()
-        //        (rectangle as! SCNBox).height = 4
-        //        (rectangle as! SCNBox).width = 2
-        //        (rectangle as! SCNBox).length = 0.2
-        //
-        //        //rectangle.materials.first?.diffuse.contents = UIColor.yellow
-        //        //objNode.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "basketball")
-        //
-        //        objNode = SCNNode(geometry: rectangle)
-        //
-        //        gameScene.rootNode.addChildNode(objNode)
-        
-        
-        
-        
-        // let importScene = SCNScene.init(named: "shop.dae")
-        
-        
-        //        hollowSphere = importScene!.rootNode.childNodes[0]
-        //
-        //
-        //        let mat = hollowSphere.geometry?.materials[0]
-        //        print(hollowSphere.geometry?.materials.count)
-        //        mat?.isDoubleSided = true
-        //        mat?.lightingModel = SCNMaterial.LightingModel.constant
-        //
-        //        gameScene.rootNode.addChildNode(hollowSphere)
-        //
-        
-        
-        
-        //        lightNode = SCNNode()
-        //        let light: SCNLight = SCNLight()
-        //        lightNode.light = light
-        //        lightNode.position = SCNVector3.init(0, 0, 0)
-        //
-        //gameScene.rootNode.addChildNode(lightNode)
-        
-        //        mat?.lightingModel = SCNMaterial.LightingModel.physicallyBased
-        //        mat?.diffuse.contents = #imageLiteral(resourceName: "rustediron-streaks-albedo")
-        //        mat?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
-        //        mat?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
-        //        mat?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let location = touches.first!.location(in: gameView)
+        let hitList = gameView.hitTest(location, options: nil)
+        print(hitList.first?.node.name)
         
     }
+
     
 
     
@@ -161,59 +120,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
 //        }
 //    }
     
-    //    override var shouldAutorotate: Bool {
-    //        return false
-    //    }
-    
-    
-    //    let Roll: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "Roll:  "
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
-    //    let Pitch: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "Pitch:  "
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
-    //    let Yaw: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "Yaw:  "
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
-    //    let RollVal: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "--"
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
-    //    let PitchVal: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "--"
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
-    //    let YawVal: UILabel = {
-    //        let view = UILabel()
-    //        view.text = "--"
-    //        view.font = view.font.withSize(16)
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    //
+
     
     
     func addConstraintString(str: String, views: [String: UIView]){
@@ -247,7 +154,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         addConstraintString(str: "H:|[v0(60)][v1(60)]", views: ["v0": lowerCameraButton, "v1": raiseCameraButton])
         addConstraintString(str: "V:[v0(70)]|", views: ["v0": raiseCameraButton])
         addConstraintString(str: "V:[v0(70)]|", views: ["v0": lowerCameraButton])
-
 
         
     }
@@ -308,8 +214,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
 
     
     func startRaiseCamera(){
-        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { (_) in
-            self.cameraNode.position.z += 0.02
+        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+            self.cameraNode.position.z += 0.01
         }
     }
     
@@ -318,8 +224,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startLowerCamera(){
-        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { (_) in
-            self.cameraNode.position.z -= 0.02
+        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+            self.cameraNode.position.z -= 0.01
         }
     }
     
@@ -328,8 +234,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkUp(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { (_) in
-            self.cameraNode.position.y += 0.09
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
+            self.cameraNode.position.y += 0.1
         }
     }
     
@@ -338,8 +244,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkDown(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { (_) in
-            self.cameraNode.position.y -= 0.09
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
+            self.cameraNode.position.y -= 0.1
         }
     }
     
