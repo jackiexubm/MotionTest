@@ -16,38 +16,30 @@ class CartViewController: UIViewController{
     }
     
     func setupViews(){
-        view.addSubview(topLabel)
         view.addSubview(checkoutButton)
-        view.addSubview(closeButton)
         view.addSubview(content)
+        view.addSubview(closeButton)
         
-        addConstraintString(str: "H:|[v0]|")
+        let imageHeight = view.frame.width * 1737 / 1125
+        
         addConstraintString(str: "H:|-20-[v1]-20-|")
         addConstraintString(str: "H:|[v3]|")
-        addConstraintString(str: "V:|-20-[v0(50)]-10-[v3(500)]-[v1(60)]-20-|")
+        addConstraintString(str: "V:|[v3(\(imageHeight))]-[v1(50)]-10-|")
         
-        addConstraintString(str: "H:|-10-[v2(30)]")
-        addConstraintString(str: "V:|-30-[v2(30)]")
+        addConstraintString(str: "H:|-5-[v2(40)]")
+        addConstraintString(str: "V:|-20-[v2(40)]")
         
     }
-    
-    let topLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "My Cart"
-        label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 30)
-        return label
-    }()
+
     
     let checkoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Checkout", for: .normal)
-        button.setTitleColor(UIColor.green, for: .normal)
+        button.setTitleColor(UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 25)
-        button.layer.cornerRadius = 30
-        button.layer.borderColor = UIColor.green.cgColor
+        button.layer.cornerRadius = 25
+        button.layer.borderColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1).cgColor
         button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(checkoutButtonTouched), for: .touchUpInside)
         return button
@@ -62,27 +54,26 @@ class CartViewController: UIViewController{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.blue
         button.addTarget(self, action: #selector(dismissThyself), for: .touchUpInside)
-        // add down arrow image
         
         return button
     }()
     
     func dismissThyself(){
-        print("dismiss")
+        dismiss(animated: true) { 
+            // completion block
+        }
     }
     
     let content: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.green
-        
-        
+        view.image = #imageLiteral(resourceName: "myCart")
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
     func addConstraintString(str: String){
         let views: [String: UIView] = [
-            "v0": topLabel,
             "v1": checkoutButton,
             "v2": closeButton,
             "v3": content

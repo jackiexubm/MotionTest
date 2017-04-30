@@ -126,10 +126,10 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add to Cart", for: .normal)
-        button.setTitleColor(UIColor.green, for: .normal)
+        button.setTitleColor(UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18)
         button.layer.cornerRadius = 25
-        button.layer.borderColor = UIColor.green.cgColor
+        button.layer.borderColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1).cgColor
         button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
         return button
