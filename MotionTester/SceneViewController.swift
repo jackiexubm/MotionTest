@@ -75,14 +75,9 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             gameScene.rootNode.addChildNode(node)
             
             if node.name!.contains("Floor"){
-                print(node.name)
-                print(node.geometry?.materials.count)
-                print(node.geometry?.firstMaterial)
                 //node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBakeHiRes")
                 //node.geometry?.firstMaterial?.lightingModel = .constant
             }
-            
-            print(node.name)
             
             if node.name!.contains("Fruit_Loops"){
                 node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "fruitloops")
@@ -97,10 +92,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             }else if node.name!.contains("Frosted_Flakes"){
                 node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
             }
-    
             
             node.geometry?.firstMaterial?.isDoubleSided = true
-
 
         }
         
@@ -141,11 +134,16 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         switch nodeName{
         case "Ceiling"?:
             print("ceil")
-        case "Floor"?:
-            print("flo")
+        case "Frosted_Flakes"?:
+            let newVC = CheckoutViewController()
+            
+            present(newVC, animated: true, completion: { 
+                //completion block
+            })
         default:
             print("neither")
         }
+        
         
     }
 

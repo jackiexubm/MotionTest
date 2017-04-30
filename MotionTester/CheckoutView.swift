@@ -17,25 +17,75 @@ class CheckoutView: UIView{
     }
     
     func setupViews(){
-        addSubview(title)
+        addSubview(itemName)
+        addSubview(quantityLabel)
+        addSubview(priceLabel)
+        addSubview(addButton)
         
-        addConstraintString(str: "H:||")
-        addConstraint(NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+        addConstraintString(str: "H:|[v0]|")
+        addConstraintString(str: "V:|-20-[v0(80)]")
+        
+        addConstraintString(str: "H:|[v1]|")
+        addConstraintString(str: "H:|[v2]|")
+        addConstraintString(str: "H:|-40-[v3]-40-|")
+        addConstraintString(str: "V:[v1(30)]-10-[v2(40)]-20-[v3(60)]-20-|")
+        
+        
         
     }
     
-    let title: UILabel = {
+    let itemName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.red
-        label.text = "Cart"
+        label.text = "Frosted Flakes"
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 40)
         return label
     }()
     
+    let quantityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "1"
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.init(name: "HelveticaNeue", size: 30)
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "$4.99"
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 35)
+        return label
+    }()
+    
+    let addButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add to Cart", for: .normal)
+        button.setTitleColor(UIColor.green, for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 25)
+        button.layer.cornerRadius = 30
+        button.layer.borderColor = UIColor.green.cgColor
+        button.layer.borderWidth = 2
+        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    func addButtonPressed(){
+        print("touched")
+    }
+
+    
     func addConstraintString(str: String){
         let views: [String: UIView] = [
-            "v0":title,
-            
+            "v0":itemName,
+            "v1":quantityLabel,
+            "v2":priceLabel,
+            "v3":addButton
             ]
         addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: str,
@@ -48,5 +98,8 @@ class CheckoutView: UIView{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+
+    
     
 }

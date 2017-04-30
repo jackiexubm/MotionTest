@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         //window?.rootViewController = CartViewController()
         window?.rootViewController = SceneViewController()
+        //window?.rootViewController = CheckoutViewController()
 
         
         

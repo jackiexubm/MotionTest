@@ -19,8 +19,8 @@ class CartView: UIView{
     func setupViews(){
         addSubview(title)
         
-        addConstraintString(str: "H:||")
-        addConstraint(NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+//        addConstraintString(str: "H:||")
+//        addConstraint(NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
 
     }
     
