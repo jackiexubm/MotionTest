@@ -134,14 +134,12 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         let location = touches.first!.location(in: gameView)
         let hitList = gameView.hitTest(location, options: nil)
         let nodeName = hitList.first?.node.name
-        print(nodeName)
-        
         
         switch nodeName{
         case "Ceiling"?:
             print("ceil")
         case "Frosted_Flakes"?:
-            let newVC = CheckoutViewController()
+            let newVC = ItemViewController()
             
             present(newVC, animated: true, completion: { 
                 //completion block

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckoutViewController: UIViewController{
+class ItemViewController: UIViewController{
     
     override func viewDidLoad() {
         view.backgroundColor = UIColor.white
@@ -85,10 +85,21 @@ class CheckoutViewController: UIViewController{
         button.layer.cornerRadius = 25
         button.layer.borderColor = UIColor.green.cgColor
         button.layer.borderWidth = 2
-        button.addTarget(self, action: #selector(dismissThyself), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
         return button
     }()
     
+    func addButtonTouched(){
+        (presentingViewController as! SceneViewController).itemsCount += 1
+        //shrink while going down? looks like going into cart
+        dismissThyself()
+    }
+    
+    func dismissThyself(){
+        dismiss(animated: true) {
+            //completion block
+        }
+    }
     
     func addConstraintString(str: String){
         let views: [String: UIView] = [
@@ -106,11 +117,6 @@ class CheckoutViewController: UIViewController{
         )
     }
 
-    
-    func dismissThyself(){
-        dismiss(animated: true) {
-            //completion block
-        }
-    }
+
 
 }
