@@ -78,22 +78,26 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 print(node.name)
                 print(node.geometry?.materials.count)
                 print(node.geometry?.firstMaterial)
-                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBakeHiRes")
-                //node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBake")
-                node.geometry?.firstMaterial?.lightingModel = .constant
-                print(node.geometry?.firstMaterial)
+                //node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "FloorBakeHiRes")
+                //node.geometry?.firstMaterial?.lightingModel = .constant
             }
             
-            if node.name!.contains("Shelf") {
-//                print(node.geometry?.materials.count)
-//                print(node.geometry?.firstMaterial?.blendMode.rawValue)
-//                
-//                print(node.geometry?.firstMaterial?.cullMode.rawValue)
-//                
-               // node.geometry?.firstMaterial?.cullMode.
-                
-                //node.geometry?.firstMaterial?.blendMode =
+            print(node.name)
+            
+            if node.name!.contains("Fruit_Loops"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "fruitloops")
+            }else if node.name!.contains("Honey_Nut"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "honeynut")
+            }else if node.name!.contains("Rice_Krispies"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "rice")
+            }else if node.name!.contains("Apple_Jacks"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "applejacks")
+            }else if node.name!.contains("Lucky_Charms"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "luckycharms")
+            }else if node.name!.contains("Frosted_Flakes"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
             }
+    
             
             node.geometry?.firstMaterial?.isDoubleSided = true
 
@@ -256,7 +260,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     let cartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.blue
+        //button.backgroundColor = UIColor.blue
         button.addTarget(self, action: #selector(openCart), for: UIControlEvents.touchUpInside)
         return button
     }()
