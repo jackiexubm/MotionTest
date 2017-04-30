@@ -15,6 +15,7 @@
 		E93133B11EB57BDE00F528CF /* shop.dae in Resources */ = {isa = PBXBuildFile; fileRef = E93133B01EB57BDE00F528CF /* shop.dae */; };
 		E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9386AB31E919E0100F1B55C /* SceneViewController.swift */; };
 		E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */; };
+		E9B71D0A1EB6463000BC6006 /* justCereals.dae in Resources */ = {isa = PBXBuildFile; fileRef = E9B71D091EB6463000BC6006 /* justCereals.dae */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		E94C86091E8EAEEB00A0968E /* MotionTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E94C86181E8EAEEB00A0968E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9B71D091EB6463000BC6006 /* justCereals.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = justCereals.dae; sourceTree = "<group>"; };
 		E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMotion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				E90901211EB5957C00B4016F /* CategoryChooserViewController.swift */,
 				E90901231EB5958500B4016F /* AisleChooserViewController.swift */,
 				E93133B01EB57BDE00F528CF /* shop.dae */,
+				E9B71D091EB6463000BC6006 /* justCereals.dae */,
 				E94C86181E8EAEEB00A0968E /* Info.plist */,
 				E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */,
 			);
@@ -136,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B71D0A1EB6463000BC6006 /* justCereals.dae in Resources */,
 				E93133B11EB57BDE00F528CF /* shop.dae in Resources */,
 				E91046661E9DC02700C0336A /* Assets.xcassets in Resources */,
 			);

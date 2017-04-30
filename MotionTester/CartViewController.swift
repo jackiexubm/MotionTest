@@ -52,7 +52,6 @@ class CartViewController: UIViewController{
     let closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.blue
         button.addTarget(self, action: #selector(dismissThyself), for: .touchUpInside)
         
         return button

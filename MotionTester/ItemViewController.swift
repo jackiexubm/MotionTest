@@ -85,9 +85,19 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         scene = SCNScene()
         sceneView.scene = scene
         
+        selectedItem.scale.x *= 3
+        selectedItem.scale.y *= 3
+        selectedItem.scale.z *= 3
+        
+        selectedItem.eulerAngles.y += Float(M_PI / 2 * -1)
+        selectedItem.eulerAngles.z += Float(M_PI / 2 * -1)
+        
+        // not sure why frosted flakes not working
+        if selectedItem.name!.contains("Frosted"){
+            selectedItem.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
+        }
+        
         scene.rootNode.addChildNode(selectedItem!)
-        print(selectedItem.childNodes.count)
-        selectedItem?.position = SCNVector3Make(0, 0, 0)
         
         sceneView.isPlaying = true
         
@@ -191,7 +201,7 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         let str: String = quantityLabel.text!
         
         let newNum = Int(str)! - 1
-        if newNum >= 0{
+        if newNum >= 1 {
             quantityLabel.text = String(newNum)
         }
         

@@ -28,6 +28,14 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     var testNode: SCNNode!
     
+    var cerealsScene: SCNScene!
+    var frostedFlakesNode: SCNNode!
+    var fruitLoopsNode: SCNNode!
+    var honeyNutNode: SCNNode!
+    var riceKrispiesNode: SCNNode!
+    var appleJacksNode: SCNNode!
+    var luckyCharmsNode: SCNNode!
+    
     var selectedItemNode: SCNNode!
     
     var itemsCount: Int = 0 {
@@ -105,6 +113,34 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             
         }
         
+        cerealsScene = SCNScene.init(named: "justCereals.dae")
+        
+        for node in cerealsScene.rootNode.childNodes {
+        
+            if node.name!.contains("Fruit_Loops"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "fruitloops")
+                fruitLoopsNode = node
+            }else if node.name!.contains("Honey_Nut"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "honeynut")
+                honeyNutNode = node
+            }else if node.name!.contains("Rice_Krispies"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "rice")
+                riceKrispiesNode = node
+            }else if node.name!.contains("Apple_Jacks"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "applejacks")
+                appleJacksNode = node
+            }else if node.name!.contains("Lucky_Charms"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "luckycharms")
+                luckyCharmsNode = node
+            }else if node.name!.contains("Frosted"){
+                node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
+                frostedFlakesNode = node
+            }
+
+            
+            node.geometry?.firstMaterial?.isDoubleSided = true
+        }
+        
         lightNode = SCNNode()
         let lit = SCNLight()
         
@@ -140,16 +176,11 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             let hitList = gameView.hitTest(location, options: nil)
             let hitNode = hitList.first?.node
             let nodeName = hitNode?.name
-            selectedItemNode = hitNode
-            
-            print(selectedItemNode)
             
             switch nodeName{
-            case "Ceiling"?:
-                print("ceil")
             case "Frosted_Flakes"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = frostedFlakesNode
                 newVC.itemName = "Frosted Flakes"
                 newVC.price = "$4.99"
                 present(newVC, animated: true, completion: {
@@ -157,7 +188,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 })
             case "Rice_Krispies"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = riceKrispiesNode
                 newVC.itemName = "Rice Krispies"
                 newVC.price = "$4.99"
                 present(newVC, animated: true, completion: {
@@ -165,7 +196,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 })
             case "Lucky_Charms"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = luckyCharmsNode
                 newVC.itemName = "Lucky Charms"
                 newVC.price = "$4.99"
                 present(newVC, animated: true, completion: {
@@ -173,7 +204,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 })
             case "Fruit_Loops"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = fruitLoopsNode
                 newVC.itemName = "Froot Loops"
                 newVC.price = "$4.99"
                 present(newVC, animated: true, completion: {
@@ -181,15 +212,15 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 })
             case "Honey_Nut"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = honeyNutNode
                 newVC.itemName = "Honey Nut"
-                newVC.price = "$4.99"
+                newVC.price = "$3.99"
                 present(newVC, animated: true, completion: {
                     //completion block
                 })
             case "Apple_Jacks"?:
                 let newVC: ItemViewController = ItemViewController()
-                newVC.selectedItem = hitNode?.clone()
+                newVC.selectedItem = appleJacksNode
                 newVC.itemName = "Apple Jacks"
                 newVC.price = "$4.99"
                 present(newVC, animated: true, completion: {
