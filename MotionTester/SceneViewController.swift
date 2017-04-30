@@ -28,6 +28,12 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     var testNode: SCNNode!
     
+    var itemsCount: Int = 0 {
+        didSet {
+            itemCountLabel.text = String(itemsCount)
+        }
+    }
+    
     var transformTimer: TimeInterval = 0
     weak var walkTimer: Timer?
     weak var heightTimer: Timer?
@@ -178,6 +184,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         view.addSubview(raiseCameraButton)
         view.addSubview(lowerCameraButton)
         view.addSubview(cartButton)
+        view.addSubview(cartImage)
+        view.addSubview(itemCountLabel)
         
         addConstraintString(str: "H:|-10-[v0(50)]", views: ["v0": walkButtonsImage])
         addConstraintString(str: "V:[v0(100)]-10-|", views: ["v0": walkButtonsImage])
@@ -193,11 +201,18 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         addConstraintString(str: "H:[v0(70)]|", views: ["v0": raiseCameraButton])
         addConstraintString(str: "H:[v0(70)]|", views: ["v0": lowerCameraButton])
         
-        addConstraintString(str: "V:[v0(80)]", views: ["v0" : cartButton])
-        addConstraintString(str: "H:|[v0(40)]", views: ["v0" : cartButton])
-        self.view.addConstraint(NSLayoutConstraint(item: cartButton, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0))
+        addConstraintString(str: "V:[v0(45)]-(-10)-|", views: ["v0" : cartButton])
+        addConstraintString(str: "H:[v0(55)]", views: ["v0" : cartButton])
+        self.view.addConstraint(NSLayoutConstraint(item: cartButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
         
-
+        addConstraintString(str: "V:[v0(37)]-(-2)-|", views: ["v0" : cartImage])
+        addConstraintString(str: "H:[v0(37)]", views: ["v0" : cartImage])
+        self.view.addConstraint(NSLayoutConstraint(item: cartImage, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: -3))
+        
+        addConstraintString(str: "V:[v0(20)]-8-|", views: ["v0" : itemCountLabel])
+        addConstraintString(str: "H:[v0(20)]", views: ["v0" : itemCountLabel])
+        self.view.addConstraint(NSLayoutConstraint(item: itemCountLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+        
         
     }
     
@@ -258,12 +273,30 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     let cartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.backgroundColor = UIColor.blue
+        button.layer.cornerRadius = 7
+        button.backgroundColor = UIColor(white: 1, alpha: 0.6)
         button.addTarget(self, action: #selector(openCart), for: UIControlEvents.touchUpInside)
         return button
     }()
-
     
+    let cartImage: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = #imageLiteral(resourceName: "cart")
+        view.contentMode = UIViewContentMode.scaleAspectFit
+        return view
+    }()
+    
+    let itemCountLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "0"
+        view.textAlignment = NSTextAlignment.center
+        view.font = UIFont(name: "HelveticaNeue-Bold", size: 13)
+        view.textColor = UIColor.black
+        return view
+    }()
+
     func startRaiseCamera(){
         heightTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (_) in
             self.cameraNode.position.z += 0.01
@@ -285,8 +318,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkUp(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
-            self.cameraNode.position.y += 0.1
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
+            self.cameraNode.position.y += 0.06
         }
     }
     
@@ -295,8 +328,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkDown(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
-            self.cameraNode.position.y -= 0.1
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
+            self.cameraNode.position.y -= 0.06
         }
     }
     
@@ -305,9 +338,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func openCart(){
-    
-        //print(lightNode.light?.shadow)
-        
+        print("hi")
     }
     
     
