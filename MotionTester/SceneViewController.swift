@@ -28,6 +28,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     var testNode: SCNNode!
     
+    var selectedItemNode: SCNNode!
+    
     var itemsCount: Int = 0 {
         didSet {
             itemCountLabel.text = String(itemsCount)
@@ -100,7 +102,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             }
             
             node.geometry?.firstMaterial?.isDoubleSided = true
-
+            
         }
         
         lightNode = SCNNode()
@@ -131,47 +133,98 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let location = touches.first!.location(in: gameView)
-        let hitList = gameView.hitTest(location, options: nil)
-        let nodeName = hitList.first?.node.name
-        
-        switch nodeName{
-        case "Ceiling"?:
-            print("ceil")
-        case "Frosted_Flakes"?:
-            let newVC = ItemViewController()
+        // if statement is to check if the VR view is main view. this prevents actions on this view while itemViewController has the focus
+        if presentedViewController == nil {
             
-            present(newVC, animated: true, completion: { 
-                //completion block
-            })
-        default:
-            print("neither")
+            let location = touches.first!.location(in: gameView)
+            let hitList = gameView.hitTest(location, options: nil)
+            let hitNode = hitList.first?.node
+            let nodeName = hitNode?.name
+            selectedItemNode = hitNode
+            
+            print(selectedItemNode)
+            
+            switch nodeName{
+            case "Ceiling"?:
+                print("ceil")
+            case "Frosted_Flakes"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Frosted Flakes"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            case "Rice_Krispies"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Rice Krispies"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            case "Lucky_Charms"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Lucky Charms"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            case "Fruit_Loops"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Froot Loops"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            case "Honey_Nut"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Honey Nut"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            case "Apple_Jacks"?:
+                let newVC: ItemViewController = ItemViewController()
+                newVC.selectedItem = hitNode?.clone()
+                newVC.itemName = "Apple Jacks"
+                newVC.price = "$4.99"
+                present(newVC, animated: true, completion: {
+                    //completion block
+                })
+            default:
+                print("neither")
+            }
+            
         }
         
         
     }
-
     
-
     
-//    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-//        if time > transformTimer{
-//            lightNode.position.y -= 0.7
-//            transformTimer = time + 0.1
-//        }
-//    }
     
-
+    
+    //    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+    //        if time > transformTimer{
+    //            lightNode.position.y -= 0.7
+    //            transformTimer = time + 0.1
+    //        }
+    //    }
+    
+    
     
     
     func addConstraintString(str: String, views: [String: UIView]){
-            self.view.addConstraints(NSLayoutConstraint.constraints(
-                withVisualFormat: str,
-                options: NSLayoutFormatOptions(),
-                metrics: nil,
-                views: views)
-            )
-    
+        self.view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: str,
+            options: NSLayoutFormatOptions(),
+            metrics: nil,
+            views: views)
+        )
+        
     }
     
     func initSubviews(){
@@ -187,7 +240,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         
         addConstraintString(str: "H:|-10-[v0(50)]", views: ["v0": walkButtonsImage])
         addConstraintString(str: "V:[v0(100)]-10-|", views: ["v0": walkButtonsImage])
-
+        
         addConstraintString(str: "H:[v0(50)]-10-|", views: ["v0": heightButtonsImage])
         addConstraintString(str: "V:[v0(100)]-10-|", views: ["v0": heightButtonsImage])
         
@@ -237,7 +290,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     let downAisleButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(startWalkDown), for: UIControlEvents.touchDown)
@@ -294,7 +347,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         view.textColor = UIColor.black
         return view
     }()
-
+    
     func startRaiseCamera(){
         heightTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (_) in
             self.cameraNode.position.z += 0.01
@@ -336,12 +389,15 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func openCart(){
-        print("hi")
+        let newVC = CartViewController()
+        present(newVC, animated: true) {
+            //completion block
+        }
     }
     
     
     
-
+    
     
     
     
