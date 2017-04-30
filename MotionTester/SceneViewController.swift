@@ -179,19 +179,19 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         view.addSubview(lowerCameraButton)
         view.addSubview(cartButton)
         
-        addConstraintString(str: "H:|-10-[v0(100)]", views: ["v0": walkButtonsImage])
-        addConstraintString(str: "V:|-10-[v0(50)]", views: ["v0": walkButtonsImage])
+        addConstraintString(str: "H:|-10-[v0(50)]", views: ["v0": walkButtonsImage])
+        addConstraintString(str: "V:[v0(100)]-10-|", views: ["v0": walkButtonsImage])
 
-        addConstraintString(str: "H:|-10-[v0(100)]", views: ["v0": heightButtonsImage])
-        addConstraintString(str: "V:[v0(50)]-10-|", views: ["v0": heightButtonsImage])
+        addConstraintString(str: "H:[v0(50)]-10-|", views: ["v0": heightButtonsImage])
+        addConstraintString(str: "V:[v0(100)]-10-|", views: ["v0": heightButtonsImage])
         
-        addConstraintString(str: "H:|[v0(60)][v1(60)]", views: ["v0": downAisleButton, "v1": upAisleButton])
-        addConstraintString(str: "V:|[v0(70)]", views: ["v0": upAisleButton])
-        addConstraintString(str: "V:|[v0(70)]", views: ["v0": downAisleButton])
+        addConstraintString(str: "V:[v0(60)][v1(60)]|", views: ["v1": downAisleButton, "v0": upAisleButton])
+        addConstraintString(str: "H:|[v0(70)]", views: ["v0": upAisleButton])
+        addConstraintString(str: "H:|[v0(70)]", views: ["v0": downAisleButton])
         
-        addConstraintString(str: "H:|[v0(60)][v1(60)]", views: ["v0": lowerCameraButton, "v1": raiseCameraButton])
-        addConstraintString(str: "V:[v0(70)]|", views: ["v0": raiseCameraButton])
-        addConstraintString(str: "V:[v0(70)]|", views: ["v0": lowerCameraButton])
+        addConstraintString(str: "V:[v0(60)][v1(60)]|", views: ["v1": lowerCameraButton, "v0": raiseCameraButton])
+        addConstraintString(str: "H:[v0(70)]|", views: ["v0": raiseCameraButton])
+        addConstraintString(str: "H:[v0(70)]|", views: ["v0": lowerCameraButton])
         
         addConstraintString(str: "V:[v0(80)]", views: ["v0" : cartButton])
         addConstraintString(str: "H:|[v0(40)]", views: ["v0" : cartButton])
@@ -204,14 +204,14 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     let walkButtonsImage: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = #imageLiteral(resourceName: "WalkButtons")
+        view.image = #imageLiteral(resourceName: "walkButtons")
         return view
     }()
     
     let heightButtonsImage: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = #imageLiteral(resourceName: "HeightButtons")
+        view.image = #imageLiteral(resourceName: "heightButtons")
         return view
     }()
     
@@ -265,7 +265,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
 
     
     func startRaiseCamera(){
-        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (_) in
             self.cameraNode.position.z += 0.01
         }
     }
@@ -275,7 +275,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startLowerCamera(){
-        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+        heightTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { (_) in
             self.cameraNode.position.z -= 0.01
         }
     }
@@ -285,8 +285,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkUp(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
-            self.cameraNode.position.y += 0.5
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+            self.cameraNode.position.y += 0.1
         }
     }
     
@@ -295,8 +295,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func startWalkDown(){
-        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
-            self.cameraNode.position.y -= 0.5
+        walkTimer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { (_) in
+            self.cameraNode.position.y -= 0.1
         }
     }
     

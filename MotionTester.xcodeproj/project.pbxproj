@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90901221EB5957C00B4016F /* CategoryChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90901211EB5957C00B4016F /* CategoryChooserViewController.swift */; };
+		E90901241EB5958500B4016F /* AisleChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90901231EB5958500B4016F /* AisleChooserViewController.swift */; };
 		E91046661E9DC02700C0336A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91046651E9DC02700C0336A /* Assets.xcassets */; };
 		E93133A71EB5378E00F528CF /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93133A61EB5378E00F528CF /* CartViewController.swift */; };
 		E93133AF1EB575A000F528CF /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93133AE1EB575A000F528CF /* CheckoutViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90901211EB5957C00B4016F /* CategoryChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryChooserViewController.swift; sourceTree = "<group>"; };
+		E90901231EB5958500B4016F /* AisleChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AisleChooserViewController.swift; sourceTree = "<group>"; };
 		E91046651E9DC02700C0336A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E93133A61EB5378E00F528CF /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		E93133AE1EB575A000F528CF /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
 				E93133A61EB5378E00F528CF /* CartViewController.swift */,
 				E93133AE1EB575A000F528CF /* CheckoutViewController.swift */,
+				E90901211EB5957C00B4016F /* CategoryChooserViewController.swift */,
+				E90901231EB5958500B4016F /* AisleChooserViewController.swift */,
 				E93133B01EB57BDE00F528CF /* shop.dae */,
 				E94C86181E8EAEEB00A0968E /* Info.plist */,
 				E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */,
@@ -142,9 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90901221EB5957C00B4016F /* CategoryChooserViewController.swift in Sources */,
 				E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */,
 				E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */,
 				E93133A71EB5378E00F528CF /* CartViewController.swift in Sources */,
+				E90901241EB5958500B4016F /* AisleChooserViewController.swift in Sources */,
 				E93133AF1EB575A000F528CF /* CheckoutViewController.swift in Sources */,
 				E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */,
 			);

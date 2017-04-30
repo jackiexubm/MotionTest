@@ -19,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = CartViewController()
+        //window?.rootViewController = CartViewController()
+
         //window?.rootViewController = SceneViewController()
         //window?.rootViewController = CheckoutViewController()
+        //window?.rootViewController = AisleChooserViewController()
+        window?.rootViewController = CategoryChooserViewController()
+        
 
         
         

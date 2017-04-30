@@ -92,11 +92,11 @@ class CheckoutViewController: UIViewController{
     
     func addConstraintString(str: String){
         let views: [String: UIView] = [
-            "v0":itemName,
-            "v1":quantityLabel,
-            "v2":priceLabel,
-            "v3":addButton,
-            "v4":cancelButton
+            "v0": itemName,
+            "v1": quantityLabel,
+            "v2": priceLabel,
+            "v3": addButton,
+            "v4": cancelButton
         ]
         view.addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: str,
