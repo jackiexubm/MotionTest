@@ -10,6 +10,8 @@ import UIKit
 
 class CartViewController: UIViewController{
     
+    // Temporarily hard coded for demo
+    
     override func viewDidLoad() {
         view.backgroundColor = UIColor.white
         setupViews()

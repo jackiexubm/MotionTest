@@ -136,8 +136,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
                 frostedFlakesNode = node
             }
-
-            
             node.geometry?.firstMaterial?.isDoubleSided = true
         }
         
@@ -158,7 +156,7 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         gameScene.rootNode.addChildNode(cameraNode)
-        cameraNode.position = SCNVector3.init(0, 0, 1.4)
+        cameraNode.position = SCNVector3.init(0, -5, 1.4)
         
         cameraNode.camera?.zNear = 0.1
         cameraNode.camera?.zFar = 100
