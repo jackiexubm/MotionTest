@@ -1,15 +1,15 @@
 //
-//  CheckoutViewController.swift
+//  ItemViewControllerV2.swift
 //  MotionTester
 //
-//  Created by Jackie Xu on 4/29/17.
+//  Created by Jackie Xu on 5/28/17.
 //  Copyright © 2017 Jackie Xu. All rights reserved.
 //
 
 import UIKit
 import SceneKit
 
-class ItemViewController: UIViewController, SCNSceneRendererDelegate{
+class ItemViewControllerV2: UIViewController, SCNSceneRendererDelegate{
     
     var sceneView: SCNView!
     var scene: SCNScene!
@@ -19,45 +19,70 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
     var price: String!
     
     override func viewDidLoad() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.clear
         setupItem3D()
         setupViews()
         itemNameLabel.text = itemName
         priceLabel.text = price
-
+    
     }
     
     func setupViews(){
-        view.addSubview(itemNameLabel)
-        view.addSubview(quantityLabel)
-        view.addSubview(priceLabel)
-        view.addSubview(addButton)
-        view.addSubview(increaseQuantity)
-        view.addSubview(decreaseQuantity)
-        view.addSubview(cancelButton)
         view.addSubview(item3D)
         item3D.addSubview(sceneView)
+
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(itemNameLabel)
+        backgroundView.addSubview(quantityLabel)
+        backgroundView.addSubview(priceLabel)
+        backgroundView.addSubview(addButton)
+        backgroundView.addSubview(increaseQuantity)
+        backgroundView.addSubview(decreaseQuantity)
+        backgroundView.addSubview(cancelButton)
         
+        let height = view.frame.height - 285
         
-        addConstraintString(str: "H:|[v0]|")
-        addConstraintString(str: "V:|-35-[v0(80)]")
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-15-[v0]-15-|",
+            options: NSLayoutFormatOptions(),
+            metrics: nil,
+            views: ["v0": backgroundView])
+        )
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[v0(250)]-15-|",
+            options: NSLayoutFormatOptions(),
+            metrics: nil,
+            views: ["v0": backgroundView])
+        )
+
+        addConstraintStringToBG(str: "H:|[v1]|")
         
+        addConstraintStringToBG(str: "V:|-10-[v1(50)]-10-[v2(40)]-10-[v3(50)]")
+        addConstraintStringToBG(str: "V:|-70-[v6(40)]")
+        addConstraintStringToBG(str: "V:|-70-[v7(40)]")
+
+        addConstraintStringToBG(str: "V:[v4(50)]-10-|")
+        addConstraintStringToBG(str: "V:[v5(50)]-10-|")
         
-        self.view.addConstraint(NSLayoutConstraint(item: quantityLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
-        addConstraintString(str: "H:[v7(40)]-15-[v1(25)]-15-[v6(40)]")
+        backgroundView.addConstraint(NSLayoutConstraint(item: quantityLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: backgroundView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+        backgroundView.addConstraint(NSLayoutConstraint(item: priceLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: backgroundView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+        addConstraintStringToBG(str: "H:[v6(40)]-5-[v2(40)]-5-[v7(40)]")
+        addConstraintStringToBG(str: "H:|[v3]|")
+        addConstraintStringToBG(str: "H:|-10-[v5]-10-[v4]-10-|")
+        addConstraintStringToBG(str: "H:[v5(==v4)]")
         
-        
-        addConstraintString(str: "H:|[v2]|")
-        addConstraintString(str: "H:|-10-[v4]-10-[v3]-10-|")
-        addConstraintString(str: "[v4(==v3)]")
-        addConstraintString(str: "V:[v4(50)]-10-|")
-        addConstraintString(str: "H:|[v5]|")
-        addConstraintString(str: "V:|-20-[v0(50)]-10-[v5]-10-[v1(30)]-10-[v2(40)]-20-[v3(50)]-10-|")
-        addConstraintString(str: "V:[v6(40)]-125-|")
-        addConstraintString(str: "V:[v7(40)]-125-|")
-        
-        //addConstraintString(str: "[v4(==v3)]")
-        
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[v0]|",
+            options: NSLayoutFormatOptions(),
+            metrics: nil,
+            views: ["v0": item3D])
+        )
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-10-[v0(\(height))]|",
+            options: NSLayoutFormatOptions(),
+            metrics: nil,
+            views: ["v0": item3D])
+        )
         
         item3D.addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: "H:|[v0]|",
@@ -72,6 +97,15 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
             views: ["v0": sceneView])
         )
         
+
+//        "v1": itemNameLabel,
+//        "v2": quantityLabel,
+//        "v3": priceLabel,
+//        "v4": addButton,
+//        "v5": cancelButton,
+//        "v6": increaseQuantity,
+//        "v7": decreaseQuantity,
+//        
         
     }
     
@@ -86,17 +120,19 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         scene = SCNScene()
         sceneView.scene = scene
         
-        selectedItem.scale.x *= 3
-        selectedItem.scale.y *= 3
-        selectedItem.scale.z *= 3
+        selectedItem.scale.x *= 5
+        selectedItem.scale.y *= 5
+        selectedItem.scale.z *= 5
         
-        selectedItem.eulerAngles.y += Float.pi / 2 * -1
-        selectedItem.eulerAngles.z += Float.pi / 2 * -1
+        
+        
+        selectedItem.eulerAngles.y = Float.pi / 2 * -1
+        selectedItem.eulerAngles.z = Float.pi / 2 * -1
         
         // not sure why frosted flakes not working
-//        if selectedItem.name!.contains("Frosted"){
-//            selectedItem.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
-//        }
+        //        if selectedItem.name!.contains("Frosted"){
+        //            selectedItem.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "frostedflakes")
+        //        }
         
         scene.rootNode.addChildNode(selectedItem!)
         
@@ -104,12 +140,21 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         
     }
     
+    let backgroundView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        view.layer.cornerRadius = 10
+        return view
+        
+    }()
+    
     let itemNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Frosted Flakes"
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 30)
+        label.font = UIFont.init(name: "HelveticaNeue", size: 30)
         return label
     }()
     
@@ -118,7 +163,7 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "1"
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.init(name: "HelveticaNeue", size: 30)
+        label.font = UIFont.init(name: "HelveticaNeue", size: 25)
         return label
     }()
     
@@ -136,11 +181,13 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(UIColor.gray, for: .normal)
+        //button.setTitleColor(UIColor.gray, for: .normal)
+        button.setTitleColor(UIColor(white: 85/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18)
-        button.layer.cornerRadius = 25
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 10
+        button.backgroundColor = UIColor(white: 0, alpha: 0.12)
+        //button.layer.borderColor = UIColor.gray.cgColor
+        //button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(dismissThyself), for: .touchUpInside)
         return button
     }()
@@ -149,11 +196,13 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add to Cart", for: .normal)
-        button.setTitleColor(UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1), for: .normal)
+        //button.setTitleColor(UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1), for: .normal)
+        button.setTitleColor(UIColor(white: 85/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18)
-        button.layer.cornerRadius = 25
-        button.layer.borderColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1).cgColor
-        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 10
+        button.backgroundColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 0.5)
+        //button.layer.borderColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1).cgColor
+        //button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
         return button
     }()
@@ -187,10 +236,12 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
     }
     
     func dismissThyself(){
+        // show buttons
+        (presentingViewController as! SceneViewController).showUI()
+
         dismiss(animated: true) {
             //completion block
         }
-        
     }
     
     func increaseQuantityTouched(){
@@ -209,16 +260,15 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
         
     }
     
-    func addConstraintString(str: String){
+    func addConstraintStringToBG(str: String){
         let views: [String: UIView] = [
-            "v0": itemNameLabel,
-            "v1": quantityLabel,
-            "v2": priceLabel,
-            "v3": addButton,
-            "v4": cancelButton,
-            "v5": item3D,
-            "v6": increaseQuantity,
-            "v7": decreaseQuantity
+            "v1": itemNameLabel,
+            "v2": quantityLabel,
+            "v3": priceLabel,
+            "v4": addButton,
+            "v5": cancelButton,
+            "v6": decreaseQuantity,
+            "v7": increaseQuantity,
         ]
         view.addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: str,
@@ -227,6 +277,7 @@ class ItemViewController: UIViewController, SCNSceneRendererDelegate{
             views: views)
         )
     }
+    
     
     
     

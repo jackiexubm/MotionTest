@@ -15,6 +15,8 @@
 		E93133B11EB57BDE00F528CF /* shop.dae in Resources */ = {isa = PBXBuildFile; fileRef = E93133B01EB57BDE00F528CF /* shop.dae */; };
 		E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9386AB31E919E0100F1B55C /* SceneViewController.swift */; };
 		E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */; };
+		E98A06221EDB670600F5B819 /* ItemViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A06211EDB670600F5B819 /* ItemViewControllerV2.swift */; };
+		E98A06241EDB6AC600F5B819 /* ItemViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A06231EDB6AC600F5B819 /* ItemViewV2.swift */; };
 		E9B71D0A1EB6463000BC6006 /* justCereals.dae in Resources */ = {isa = PBXBuildFile; fileRef = E9B71D091EB6463000BC6006 /* justCereals.dae */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,8 @@
 		E94C86091E8EAEEB00A0968E /* MotionTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E94C86181E8EAEEB00A0968E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E98A06211EDB670600F5B819 /* ItemViewControllerV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewControllerV2.swift; sourceTree = "<group>"; };
+		E98A06231EDB6AC600F5B819 /* ItemViewV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewV2.swift; sourceTree = "<group>"; };
 		E9B71D091EB6463000BC6006 /* justCereals.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = justCereals.dae; sourceTree = "<group>"; };
 		E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMotion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +73,8 @@
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
 				E93133A61EB5378E00F528CF /* CartViewController.swift */,
 				E93133AE1EB575A000F528CF /* ItemViewController.swift */,
+				E98A06211EDB670600F5B819 /* ItemViewControllerV2.swift */,
+				E98A06231EDB6AC600F5B819 /* ItemViewV2.swift */,
 				E90901211EB5957C00B4016F /* CategoryChooserViewController.swift */,
 				E90901231EB5958500B4016F /* AisleChooserViewController.swift */,
 				E93133B01EB57BDE00F528CF /* shop.dae */,
@@ -111,7 +117,7 @@
 				TargetAttributes = {
 					E94C86081E8EAEEB00A0968E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TWGGTGHRWF;
+						DevelopmentTeam = 2DM7J7X394;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -155,6 +161,8 @@
 				E90901221EB5957C00B4016F /* CategoryChooserViewController.swift in Sources */,
 				E9386AB41E919E0100F1B55C /* SceneViewController.swift in Sources */,
 				E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */,
+				E98A06221EDB670600F5B819 /* ItemViewControllerV2.swift in Sources */,
+				E98A06241EDB6AC600F5B819 /* ItemViewV2.swift in Sources */,
 				E93133A71EB5378E00F528CF /* CartViewController.swift in Sources */,
 				E90901241EB5958500B4016F /* AisleChooserViewController.swift in Sources */,
 				E93133AF1EB575A000F528CF /* ItemViewController.swift in Sources */,
@@ -260,10 +268,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TWGGTGHRWF;
+				DEVELOPMENT_TEAM = 2DM7J7X394;
 				INFOPLIST_FILE = MotionTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JXu.MotionTester;
+				PRODUCT_BUNDLE_IDENTIFIER = JXu.MotionTester1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -273,10 +281,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TWGGTGHRWF;
+				DEVELOPMENT_TEAM = 2DM7J7X394;
 				INFOPLIST_FILE = MotionTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JXu.MotionTester;
+				PRODUCT_BUNDLE_IDENTIFIER = JXu.MotionTester1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

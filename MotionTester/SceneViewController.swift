@@ -175,6 +175,8 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             let hitNode = hitList.first?.node
             let nodeName = hitNode?.name
             
+            
+            
             switch nodeName{
             case "Frosted_Flakes"?:
                 let newVC: ItemViewController = ItemViewController()
@@ -193,13 +195,22 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                     //completion block
                 })
             case "Lucky_Charms"?:
-                let newVC: ItemViewController = ItemViewController()
+                
+                let newVC: ItemViewControllerV2 = ItemViewControllerV2()
+                newVC.modalPresentationStyle = .overCurrentContext
                 newVC.selectedItem = luckyCharmsNode
+                
                 newVC.itemName = "Lucky Charms"
                 newVC.price = "$4.99"
+                
+                hideUI()
                 present(newVC, animated: true, completion: {
-                    //completion block
+                    // block
                 })
+
+                
+                
+                
             case "Fruit_Loops"?:
                 let newVC: ItemViewController = ItemViewController()
                 newVC.selectedItem = fruitLoopsNode
@@ -415,6 +426,31 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
     
     func stopWalkDown(){
         walkTimer?.invalidate()
+    }
+    
+    func hideUI(){
+        cartImage.isHidden = true
+        cartButton.isHidden = true
+        walkButtonsImage.isHidden = true
+        upAisleButton.isHidden = true
+        downAisleButton.isHidden = true
+        heightButtonsImage.isHidden = true
+        raiseCameraButton.isHidden = true
+        lowerCameraButton.isHidden = true
+        itemCountLabel.isHidden = true
+
+    }
+    
+    func showUI(){
+        cartImage.isHidden = false
+        cartButton.isHidden = false
+        walkButtonsImage.isHidden = false
+        upAisleButton.isHidden = false
+        downAisleButton.isHidden = false
+        heightButtonsImage.isHidden = false
+        raiseCameraButton.isHidden = false
+        lowerCameraButton.isHidden = false
+        itemCountLabel.isHidden = false
     }
     
     func openCart(){
