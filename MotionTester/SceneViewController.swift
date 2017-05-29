@@ -110,13 +110,12 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
             }
             
             node.geometry?.firstMaterial?.isDoubleSided = true
-            
+
         }
         
         cerealsScene = SCNScene.init(named: "justCereals.dae")
         
         for node in cerealsScene.rootNode.childNodes {
-        
             if node.name!.contains("Fruit_Loops"){
                 node.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "fruitloops")
                 fruitLoopsNode = node
@@ -137,13 +136,14 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
                 frostedFlakesNode = node
             }
             node.geometry?.firstMaterial?.isDoubleSided = true
+            
         }
         
         lightNode = SCNNode()
         let lit = SCNLight()
         
-        lit.castsShadow = true
-        lit.intensity = 3000
+        //lit.castsShadow = true
+        lit.intensity = 4000
         lightNode.light = lit
         
         lightNode.position = SCNVector3Make(0, 10, 3.7)
@@ -161,9 +161,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         cameraNode.camera?.zNear = 0.1
         cameraNode.camera?.zFar = 100
         
-        
-        //       cameraNode.camera?.xFov = 45
-        //        cameraNode.camera?.yFov = 90
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -438,7 +435,6 @@ class SceneViewController: UIViewController, SCNSceneRendererDelegate{
         raiseCameraButton.isHidden = true
         lowerCameraButton.isHidden = true
         itemCountLabel.isHidden = true
-
     }
     
     func showUI(){

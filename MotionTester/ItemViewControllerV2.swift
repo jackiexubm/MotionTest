@@ -97,16 +97,6 @@ class ItemViewControllerV2: UIViewController, SCNSceneRendererDelegate{
             views: ["v0": sceneView])
         )
         
-
-//        "v1": itemNameLabel,
-//        "v2": quantityLabel,
-//        "v3": priceLabel,
-//        "v4": addButton,
-//        "v5": cancelButton,
-//        "v6": increaseQuantity,
-//        "v7": decreaseQuantity,
-//        
-        
     }
     
     func setupItem3D(){
@@ -143,7 +133,7 @@ class ItemViewControllerV2: UIViewController, SCNSceneRendererDelegate{
     let backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        view.backgroundColor = UIColor(white: 1, alpha: 0.8)
         view.layer.cornerRadius = 10
         return view
         
@@ -185,7 +175,7 @@ class ItemViewControllerV2: UIViewController, SCNSceneRendererDelegate{
         button.setTitleColor(UIColor(white: 85/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18)
         button.layer.cornerRadius = 10
-        button.backgroundColor = UIColor(white: 0, alpha: 0.12)
+        button.backgroundColor = UIColor(white: 0, alpha: 0.14)
         //button.layer.borderColor = UIColor.gray.cgColor
         //button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(dismissThyself), for: .touchUpInside)
@@ -200,7 +190,7 @@ class ItemViewControllerV2: UIViewController, SCNSceneRendererDelegate{
         button.setTitleColor(UIColor(white: 85/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18)
         button.layer.cornerRadius = 10
-        button.backgroundColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 0.5)
+        button.backgroundColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 0.6)
         //button.layer.borderColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1).cgColor
         //button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)

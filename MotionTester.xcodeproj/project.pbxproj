@@ -19,6 +19,7 @@
 		E98A06241EDB6AC600F5B819 /* ItemViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A06231EDB6AC600F5B819 /* ItemViewV2.swift */; };
 		E9B71D0A1EB6463000BC6006 /* justCereals.dae in Resources */ = {isa = PBXBuildFile; fileRef = E9B71D091EB6463000BC6006 /* justCereals.dae */; };
 		E9C08C001E90C2F1000E0162 /* MyMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */; };
+		E9E60ACB1EDC93A900C101D8 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E60ACA1EDC93A900C101D8 /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E98A06231EDB6AC600F5B819 /* ItemViewV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewV2.swift; sourceTree = "<group>"; };
 		E9B71D091EB6463000BC6006 /* justCereals.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = justCereals.dae; sourceTree = "<group>"; };
 		E9C08BFF1E90C2F1000E0162 /* MyMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMotion.swift; sourceTree = "<group>"; };
+		E9E60ACA1EDC93A900C101D8 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				E91046651E9DC02700C0336A /* Assets.xcassets */,
 				E94C860C1E8EAEEB00A0968E /* AppDelegate.swift */,
 				E9386AB31E919E0100F1B55C /* SceneViewController.swift */,
+				E9E60ACA1EDC93A900C101D8 /* ProductModel.swift */,
 				E93133A61EB5378E00F528CF /* CartViewController.swift */,
 				E93133AE1EB575A000F528CF /* ItemViewController.swift */,
 				E98A06211EDB670600F5B819 /* ItemViewControllerV2.swift */,
@@ -167,6 +170,7 @@
 				E90901241EB5958500B4016F /* AisleChooserViewController.swift in Sources */,
 				E93133AF1EB575A000F528CF /* ItemViewController.swift in Sources */,
 				E94C860D1E8EAEEB00A0968E /* AppDelegate.swift in Sources */,
+				E9E60ACB1EDC93A900C101D8 /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
